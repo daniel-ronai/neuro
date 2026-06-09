@@ -129,7 +129,7 @@
 
       /* PROOF STRIP */
       .proof {
-        background: var(--off);
+        background: var(--white);
         padding: 28px 60px;
         display: flex;
         justify-content: center;
@@ -696,6 +696,176 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+ .step-recipient {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 10px 18px 10px 10px;
+  background: var(--off);
+  border: 1.5px solid var(--light);
+  border-radius: 50px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color .18s, transform .18s, box-shadow .18s;
+  width: fit-content;
+}
+.step-recipient:hover {
+  border-color: var(--blue);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,122,255,0.10);
+}
+.step-recipient-pfp {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--white);
+  box-shadow: 0 0 0 1.5px var(--light);
+}
+.step-recipient-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.2;
+}
+.step-recipient-role {
+  font-size: 12px;
+  color: var(--grey);
+}
+.step-recipient-arrow {
+  color: var(--grey);
+  flex-shrink: 0;
+  margin-left: 2px;
+}
+
+/* Process layout */
+.process-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+@media (max-width: 767px) {
+  .process-layout { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.process-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pchat-row { display: flex; flex-direction: column; gap: 4px; }
+.pchat-row.pchat-left { align-items: flex-start; }
+.pchat-row.pchat-right { align-items: flex-end; }
+
+.pchat-bubble {
+  padding: 11px 15px;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 280px;
+}
+.pchat-bubble--left {
+  background: var(--off);
+  color: var(--black);
+  border-bottom-left-radius: 4px;
+}
+.pchat-bubble--right {
+  background: var(--blue);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+.pchat-right-inner {
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+}
+.pchat-pfp {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  margin-bottom: 18px;
+}
+.pchat-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--grey);
+  letter-spacing: .02em;
+  padding: 0 4px;
+}
+.pchat-label--right { text-align: right; }
+.pchat-name-link {
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 700;
+}
+.pchat-name-link:hover { text-decoration: underline; }
+
+/* Process aside */
+.process-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  padding-top: 8px;
+}
+.process-aside-num {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--blue);
+  letter-spacing: .06em;
+  margin-bottom: 4px;
+}
+.process-aside-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--black);
+  margin-bottom: 6px;
+}
+.process-aside-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--grey);
+}
+
+.aside-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 8px 16px 8px 8px;
+  background: var(--white);
+  border: 1.5px solid var(--light);
+  border-radius: 50px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color .18s, transform .18s;
+  width: fit-content;
+}
+.aside-contact:hover {
+  border-color: var(--blue);
+  transform: translateY(-1px);
+}
+.aside-contact-pfp {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.aside-contact-name {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.2;
+}
+.aside-contact-sub {
+  display: block;
+  font-size: 11px;
+  color: var(--grey);
+}
   </style>
 </head>
 <body>
@@ -751,53 +921,83 @@
 
   <div class="section-divider"></div>
 
-  <!-- ═══ WHAT YOU GET ═══ -->
-  <section class="section">
-    <p class="section-eyebrow fade-in">What's in the report</p>
-    <h2 class="section-headline fade-in">Not a dashboard. An answer.</h2>
-    <div class="deliverables">
-      <div class="deliverable fade-in">
-        <div class="deliverable-icon">💬</div>
-        <div class="deliverable-title">Sentiment Breakdown</div>
-        <div class="deliverable-desc">What your audience actually feels — not vanity metrics. Broken down by platform, post type, and recurring theme.</div>
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="section">
+  <p class="section-eyebrow fade-in">The process</p>
+  <h2 class="section-headline fade-in">You send links.<br>We send insight.</h2>
+
+    <div class="process-layout fade-in">
+
+    <div class="process-chat">
+
+      <div class="pchat-row pchat-left">
+        <div class="pchat-right-inner">
+          <img src="./src/pfp.jpg" alt="Daniel Ronai" class="pchat-pfp" />
+          <div>
+            <div class="pchat-bubble pchat-bubble--left">send me your social profiles, ad posts, review pages. takes 2 minutes.</div>
+            <div class="pchat-label">01 · Drop your links</div>
+          </div>
+        </div>
       </div>
-      <div class="deliverable fade-in">
-        <div class="deliverable-icon">✍️</div>
-        <div class="deliverable-title">Copy That Converts</div>
-        <div class="deliverable-desc">Specific phrases your customers use — handed back to you as ready-to-test ad copy and caption ideas.</div>
+
+      <div class="pchat-row pchat-right">
+        <div class="pchat-bubble pchat-bubble--right">here are my profiles!</div>
       </div>
-      <div class="deliverable fade-in">
-        <div class="deliverable-icon">🎯</div>
-        <div class="deliverable-title">Strategic Direction</div>
-        <div class="deliverable-desc">The 2-3 things you should do differently next week, based on what your competitors' audiences are saying too.</div>
+
+      <div class="pchat-row pchat-left">
+        <div class="pchat-right-inner">
+          <img src="./src/pfp.jpg" alt="Daniel Ronai" class="pchat-pfp" />
+          <div>
+            <div class="pchat-bubble pchat-bubble--left">got them. scraping your last 200 comments, filtering the signal now.</div>
+            <div class="pchat-label">02 · We pull the signal</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pchat-row pchat-right">
+        <div class="pchat-bubble pchat-bubble--right">when do I get the report?</div>
+      </div>
+
+      <div class="pchat-row pchat-left">
+        <div class="pchat-right-inner">
+          <img src="./src/pfp.jpg" alt="Daniel Ronai" class="pchat-pfp" />
+          <div style="position:relative;display:inline-block;max-width:280px;">
+            <div class="pchat-bubble pchat-bubble--left">in your inbox within 48h. insights, copy ideas, your next move.</div>
+            <div style="position:absolute;top:-5px;right:-5px;width:27px;height:27px;background:var(--blue);border-radius:50%;border:2px solid var(--off);display:flex;align-items:center;justify-content:center;font-size:11px;line-height:1;">❤️</div>
+            <div class="pchat-label">03 · You get the report · <a href="https://x.com/daniel_ronaii" target="_blank" class="pchat-name-link">Daniel Ronai</a></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="process-aside">
+      <div class="process-aside-item">
+        <div class="process-aside-num">01</div>
+        <div class="process-aside-title">Drop your links</div>
+        <div class="process-aside-desc">Social profiles, ad posts, review pages. Takes you 2 minutes.</div>
+        <a href="https://x.com/daniel_ronaii" target="_blank" class="aside-contact">
+          <img src="./src/pfp.jpg" alt="Daniel Ronai" class="aside-contact-pfp" />
+          <div class="aside-contact-text">
+            <span class="aside-contact-name">Daniel Ronai</span>
+            <span class="aside-contact-sub">Drop them here ↗</span>
+          </div>
+        </a>
+      </div>
+      <div class="process-aside-item">
+        <div class="process-aside-num">02</div>
+        <div class="process-aside-title">We pull the signal</div>
+        <div class="process-aside-desc">Recent posts and comments, filtered for what's meaningful, run through our analysis pipeline.</div>
+      </div>
+      <div class="process-aside-item">
+        <div class="process-aside-num">03</div>
+        <div class="process-aside-title">You get the report</div>
+        <div class="process-aside-desc">A clean PDF in your inbox within 48 hours. Insights, copy ideas, and a clear next move.</div>
       </div>
     </div>
-  </section>
 
-  <div class="section-divider"></div>
-
-  <!-- ═══ HOW IT WORKS ═══ -->
-  <section class="section">
-    <p class="section-eyebrow fade-in">The process</p>
-    <h2 class="section-headline fade-in">You send links.<br>We send insight.</h2>
-    <div class="steps">
-      <div class="step fade-in">
-        <div class="step-num">01</div>
-        <div class="step-title">Drop your links</div>
-        <div class="step-desc">Social profiles, ad posts, review pages. Takes you 2 minutes.</div>
-      </div>
-      <div class="step fade-in">
-        <div class="step-num">02</div>
-        <div class="step-title">We pull the signal</div>
-        <div class="step-desc">We scrape recent posts and comments, filter for what's meaningful, and run it through our analysis pipeline.</div>
-      </div>
-      <div class="step fade-in">
-        <div class="step-num">03</div>
-        <div class="step-title">You get the report</div>
-        <div class="step-desc">A clean PDF lands in your inbox within 48 hours. Insights, copy ideas, and a clear next move.</div>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
   <!-- ═══ REPORT PREVIEW ═══ -->
   <div class="preview-section">
